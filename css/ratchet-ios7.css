@@ -133,7 +133,7 @@ body {
 
 .segmented-controller li > a {
     color: #007aff;
-    padding: 5px;
+    padding: 4px 5px 6px;
 }
 
 .segmented-controller li.active > a {
@@ -201,7 +201,7 @@ body {
 }
 
 .toggle {
-    width: 50px;
+    width: 45px;
     background: linear-gradient(90deg, #e6e6e6, #fff);
     border: 2px solid #e6e6e6;
     box-shadow: none;
@@ -235,7 +235,7 @@ body {
     left: -2px;
     height: 25px;
     width: 25px;
-    -webkit-transform: translate3d(26px,0,0);
+    -webkit-transform: translate3d(21px,0,0);
 }
 
 .chevron:before, .chevron:after {
@@ -245,7 +245,17 @@ body {
 }
 
 input[type=search] {
+    height: 28px;
     border-radius: 3px;
+    box-shadow: none;
+    border-color: #c9c9ce;
+    text-indent: 16px;
+    background: url(../img/ios7_2x.png) 101px 7px no-repeat;
+    background-size: 13px;
+}
+
+input[type=search]:focus {
+    background-position: 8px 7px;
 }
 
 input[type=search]::-webkit-input-placeholder {
