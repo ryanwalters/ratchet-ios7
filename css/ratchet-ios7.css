@@ -255,7 +255,8 @@ input:not([type=radio]):not([type=checkbox]) {
 input[type=search] {
     text-indent: 16px;
     border-radius: 3px;
-    background: url(../img/ios7_2x.png) no-repeat;
+    background-image: url(../img/ios7_2x.png);
+    background-repeat: no-repeat;
     background-size: 13px;
     background-position: -webkit-calc(50% - 22px) 7px;
     background-position: calc(50% - 22px) 7px;
@@ -274,12 +275,30 @@ input[type=search]:focus::-webkit-input-placeholder {
     text-align: left;
 }
 
+[class*="bar-"] input[type=search] {
+    margin-top: 3px;
+}
+
+[class*="bar-"] input[type=search]:focus {
+    width: calc(100% - 62px);
+    margin-right: 5px;
+}
+
+[class*="bar-"] input[type=search] + a {
+    display: none;
+    line-height: 44px;
+}
+
+[class*="bar-"] input[type=search]:focus + a {
+    display: inline;
+}
+
 .input-group {
     box-shadow: none;
 }
 
 .input-group label {
-    padding: 11px 10px 9px;
+    padding: 12px 10px 9px;
 }
 
 .input-group input:not([type=radio]):not([type=checkbox]) {
