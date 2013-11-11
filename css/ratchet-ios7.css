@@ -12,7 +12,7 @@ body {
     box-shadow: 0 1px 0 #adadad;
 }
 
-.bar-title .title {
+.bar-title .title, .input-group label {
     color: #000;
     letter-spacing: -1px;
 }
@@ -150,6 +150,7 @@ body {
     display: -webkit-box;
     -webkit-box-orient: horizontal;
     width: -webkit-calc(100% + 10px);
+    width: calc(100% + 10px);
 }
 
 .group .button {
@@ -244,14 +245,21 @@ body {
     background-color: #c7c7c7;
 }
 
-input[type=search] {
-    height: 28px;
-    border-radius: 3px;
+input:not([type=radio]):not([type=checkbox]) {
     box-shadow: none;
+    height: 28px;
     border-color: #c9c9ce;
+    
+}
+
+input[type=search] {
     text-indent: 16px;
-    background: url(../img/ios7_2x.png) 101px 7px no-repeat;
+    border-radius: 3px;
+    background: url(../img/ios7_2x.png) no-repeat;
     background-size: 13px;
+    background-position: -webkit-calc(50% - 22px) 7px;
+    background-position: calc(50% - 22px) 7px;
+    
 }
 
 input[type=search]:focus {
@@ -264,4 +272,16 @@ input[type=search]::-webkit-input-placeholder {
 
 input[type=search]:focus::-webkit-input-placeholder {
     text-align: left;
+}
+
+.input-group {
+    box-shadow: none;
+}
+
+.input-group label {
+    padding: 11px 10px 9px;
+}
+
+.input-group input:not([type=radio]):not([type=checkbox]) {
+    height: auto;
 }
