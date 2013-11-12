@@ -213,6 +213,11 @@ body {
     margin-right: 10px;
 }
 
+.autocomplete.content {
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 .list li {
     padding: 11px 15px;
 }
