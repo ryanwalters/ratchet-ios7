@@ -6,6 +6,10 @@ body {
     font-size: 16px;
 }
 
+[class*="bar-"] {
+    overflow: hidden;
+}
+
 .bar-title {
     background: #f7f7f7;
     border-bottom-color: #fff;
@@ -79,6 +83,60 @@ body {
     color: inherit;
 }
 
+.bar-standard {
+    background: #f8f8f8;
+}
+
+.bar-tab {
+    height: 44px;
+    background: #f8f8f8;
+    border-color: #ccc;
+}
+
+.tab-item {
+    padding-top: 5px;
+}
+
+.icons-only .tab-item {
+    padding-top: 10px;
+}
+
+.tab-item.active {
+    box-shadow: none;
+}
+
+.tab-icon {
+    height: 25px;
+    width: 25px;
+    background-color: #929292;
+    border: 0;
+    -webkit-mask-image: url(../img/ios7_2x.png);
+    -webkit-mask-size: 25px;
+}
+
+.tab-label {
+    color: #929292;
+    text-shadow: none;
+    font-weight: normal;
+    margin-top: 0;
+}
+
+.icons-only .tab-label {
+    display: none;
+}
+
+.tab-item.active .tab-icon {
+    background-color: #007aff;
+}
+
+.tab-item.active .tab-label {
+    color: #007aff;
+}
+
+.bar-tab ~ .content {
+    bottom: 44px;
+}
+
 [class*="button"] {
     border: 0;
     font-weight: normal;
@@ -104,10 +162,6 @@ body {
 
 .button-negative, .button-negative:active {
     background: #d94e47;
-}
-
-.bar-standard {
-    background: #f8f8f8;
 }
 
 [class*="bar-"] .segmented-controller {
@@ -277,6 +331,8 @@ input[type=search]:focus::-webkit-input-placeholder {
 
 [class*="bar-"] input[type=search] {
     margin-top: 3px;
+    box-shadow: 0 0 0 100px #c9c9ce;
+    -webkit-transform: width 0.2s;
 }
 
 [class*="bar-"] input[type=search]:focus {
@@ -286,7 +342,7 @@ input[type=search]:focus::-webkit-input-placeholder {
 
 [class*="bar-"] input[type=search] + a {
     display: none;
-    line-height: 44px;
+    height: 28px;
 }
 
 [class*="bar-"] input[type=search]:focus + a {
@@ -303,4 +359,25 @@ input[type=search]:focus::-webkit-input-placeholder {
 
 .input-group input:not([type=radio]):not([type=checkbox]) {
     height: auto;
+}
+
+/* icons */
+.tab-icon.favorite {
+    -webkit-mask-position: 0 -340px;
+}
+
+.tab-icon.history {
+    -webkit-mask-position: 0 -364px;
+}
+
+.tab-icon.info {
+    -webkit-mask-position: 0 -479px;
+}
+
+.tab-icon.trash {
+    -webkit-mask-position: 0 -245px;
+}
+
+.tab-icon.user {
+    -webkit-mask-position: 0 -292px;
 }
