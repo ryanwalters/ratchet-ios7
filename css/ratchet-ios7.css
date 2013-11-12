@@ -347,6 +347,8 @@ input[type=search]:focus::-webkit-input-placeholder {
 
 [class*="bar-"] input[type=search]:focus + a {
     display: inline;
+    position: relative; /* this is crappy */
+    top: -8px;          /* fix it! */
 }
 
 .input-group {
