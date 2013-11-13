@@ -13,6 +13,7 @@ Styling:
 Functionality:
 - swipe to delete
 - autocomplete
+- sort
 
 Other:
 - update this with supplemental documentation
@@ -20,3 +21,7 @@ Other:
 
 Ongoing:
 - add as many icons as possible
+
+Documentation stubs:
+- `.list-divider.header/.footer`
+- `.chevron.setting`

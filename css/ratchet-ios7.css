@@ -245,6 +245,10 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+.list {
+    margin-bottom: 0;
+}
+
 .list li {
     padding: 11px 15px;
 }
@@ -277,6 +281,21 @@ body {
 
 .list .list-divider.footer {
     padding: 10px 15px 27px;
+}
+
+.list.editable li {
+    position: relative;
+}
+
+.list.editable li:not(.list-divider):after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    content: "Delete";
+    z-index: -1;
+    padding: inherit;
+    background-color: #ff3b30;
+    color: #fff;
 }
 
 .list .chevron + .setting {
