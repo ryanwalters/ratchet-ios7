@@ -5,8 +5,6 @@ Demo (point phone to): http://goo.gl/di0DQg
 Todo:
 
 Styling:
-- create icons (plus inverse?)
-- `bar-title` icons
 - `list` icons
 - `bar-header-secondary` autocomplete-ready overlay
 - add delete button
@@ -18,4 +16,7 @@ Functionality:
 
 Other:
 - update this with supplemental documentation
-- add fallback to calc() to improve compatibility
+- add fallback to calc() to improve iOS backwards compatibility
+
+Ongoing:
+- add as many icons as possible
