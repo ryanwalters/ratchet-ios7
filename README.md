@@ -7,7 +7,6 @@ Todo:
 Styling:
 - `list` icons
 - `bar-header-secondary` autocomplete-ready overlay
-- add delete button
 - make easily themable
 
 Functionality:
