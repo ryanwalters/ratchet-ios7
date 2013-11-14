@@ -57,7 +57,7 @@ var getSwipes = function (target, th, max) {
             }
         };
     
-    window.addEventListener("touchstart", function (event) {
+    window.addEventListener("touchend", function (event) {
         var editable = findEditables(event.target);
         if (editable) { editable.classList.toggle("active") };
     });
