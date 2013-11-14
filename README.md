@@ -25,3 +25,4 @@ Ongoing:
 Documentation stubs:
 - `.list-divider.header/.footer`
 - `.chevron.setting`
+- `.list.editable` extra div required (fix in future release)

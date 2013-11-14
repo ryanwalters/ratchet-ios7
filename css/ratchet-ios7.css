@@ -221,10 +221,6 @@ body {
     color: #fff;
 }
 
-.content {
-    overflow-x: hidden;
-}
-
 .content p {
     font-size: 14px;
     line-height: 1.5;
@@ -287,29 +283,32 @@ body {
     padding: 10px 15px 27px;
 }
 
-.list.editable li:not(.list-divider) {
+.list.editable li:not(.list-divider),
+.list.editable li:not(.list-divider) > div {
     position: relative;
-    background-color: inherit;
-    -webkit-transition: all 0.2s;
+    padding: 0;
 }
 
-.list.editable li.active:not(.list-divider) {
+.list.editable li:not(.list-divider) > div {
+    background: #fff;
+    padding: 11px 15px;
+    -webkit-transition: -webkit-transform 0.2s;
+}
+
+.list.editable li.active > div {
     -webkit-transform: translateX(-76px);
 }
 
-.list.editable li:not(.list-divider):after {
+.list.editable li:not(.list-divider):before {
     position: absolute;
     top: 0;
     right: 0;
     content: "Delete";
     z-index: -1;
-    padding: inherit;
+    padding: 11px 15px;;
     background-color: #ff3b30;
     color: #fff;
-    -webkit-transform: translateX(76px);
-}
-
-.list.editable li.active:not(.list-divider):after {
+    -webkit-transition: -webkit-transform 0.2s;
 }
 
 .list .chevron + .setting {
