@@ -283,8 +283,14 @@ body {
     padding: 10px 15px 27px;
 }
 
-.list.editable li {
+.list.editable li:not(.list-divider) {
     position: relative;
+    background-color: inherit;
+    -webkit-transition: all 0.2s;
+}
+
+.list.editable li.active:not(.list-divider) {
+    -webkit-transform: translateX(-76px);
 }
 
 .list.editable li:not(.list-divider):after {
@@ -296,6 +302,10 @@ body {
     padding: inherit;
     background-color: #ff3b30;
     color: #fff;
+    -webkit-transform: translateX(76px);
+}
+
+.list.editable li.active:not(.list-divider):after {
 }
 
 .list .chevron + .setting {
