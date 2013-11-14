@@ -221,6 +221,10 @@ body {
     color: #fff;
 }
 
+.content {
+    overflow-x: hidden;
+}
+
 .content p {
     font-size: 14px;
     line-height: 1.5;
