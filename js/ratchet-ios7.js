@@ -11,40 +11,55 @@
 /* -----------------------
  * SWIPES
  * ----------------------- */
-var getSwipes = function (target, th, max) {
-    var startX,
-        startY,
-        deltaX,
-        deltaY,
-        timeStart,
-        timeMax = max || 400,
-        threshold = th || 50,
-        direction,
-        touchstart = function (event) {
-            startX = event.touches[0].pageX;
-            startY = event.touches[0].pageY;
-            timeStart = +new Date();
+(function () {
+    window.Swipes = {
+        getSwipes: function (th, max) {
+            var startX,
+                startY,
+                deltaX,
+                deltaY,
+                timeStart,
+                timeMax = max || 400,
+                threshold = th || 50,
+                touchstart = function (event) {
+                    startX = event.touches[0].pageX;
+                    startY = event.touches[0].pageY;
+                    timeStart = +new Date();
+                },
+                touchend = function (event) {
+                    if (+new Date() - timeStart < timeMax) {
+                        deltaX = startX - event.changedTouches[0].pageX;
+                        deltaY = startY - event.changedTouches[0].pageY;
+                        if (Math.abs(deltaX) >= threshold && Math.abs(deltaX) > Math.abs(deltaY)) {         // moving horizontally
+                            if (deltaX > 0) {
+                                this.left = true;
+                                this.right = this.up = this.down = false;
+                            } else {
+                                this.right  = true;
+                                this.left = this.up = this.down = false;
+                            }
+                        } else if (Math.abs(deltaY) >= threshold && Math.abs(deltaY) > Math.abs(deltaX)) {  // moving vertically
+                            if (deltaY > 0) {
+                                this.up     = true;
+                                this.left = this.right = this.down = false;
+                            } else {
+                                this.down   = true;
+                                this.left = this.right = this.down = false;
+                            }
+                        }
+                    }
+                };
+            
+            window.addEventListener("touchstart", touchstart, false);
+            window.addEventListener("touchend", touchend, false);
         },
-        touchend = function (event) {
-            if (+new Date() - timeStart < timeMax) {
-                deltaX = startX - event.changedTouches[0].pageX;
-                deltaY = startY - event.changedTouches[0].pageY;
-                return direction = (Math.abs(deltaX) >= threshold && Math.abs(deltaX) > Math.abs(deltaY)) ?    // Are we moving horizontally?
-                    deltaX > 0 ? "LEFT" : "RIGHT" :                                                     // ...yes: return right or left
-                    (Math.abs(deltaY) >= threshold && Math.abs(deltaY) > Math.abs(deltaX)) ?            // ...no: are we moving vertically?
-                        deltaY > 0 ? "UP" : "DOWN" :                                                    //      ...yes: return up or down
-                        null;                                                                           //      ...no
-            }
-        };
-    
-    for (var key in target) {
-        el = target[key];
-        if (el.addEventListener) {
-            el.addEventListener("touchstart", touchstart, false);
-            el.addEventListener("touchend", touchend, false);
-        }
-    }
-};
+        left:   false,
+        right:  false,
+        up:     false,
+        down:   false
+    };
+    Swipes.getSwipes();
+}());
 
 /* -----------------------
  * EDITABLES
@@ -59,6 +74,7 @@ var getSwipes = function (target, th, max) {
     
     window.addEventListener("touchend", function (event) {
         var editable = findEditables(event.target);
-        if (editable) { editable.classList.toggle("active") };
+        if (editable) { editable.classList.toggle("active"); alert(Swipes.left) };
+        
     });
 }());
