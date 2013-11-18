@@ -10,9 +10,8 @@ Styling:
 - make easily themable
 
 Functionality:
-- swipe to delete
 - autocomplete
-- sort
+- drag to sort
 
 Other:
 - update this with supplemental documentation
