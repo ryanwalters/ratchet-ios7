@@ -5,14 +5,12 @@ Demo (point phone to): http://goo.gl/di0DQg
 Todo:
 
 Styling:
-- `list` icons
 - `bar-header-secondary` autocomplete-ready overlay
 - make easily themable
 
 Functionality:
 - autocomplete
 - drag to sort
-- trigger event after item deleted
 
 Other:
 - update this with supplemental documentation
@@ -23,6 +21,7 @@ Ongoing:
 
 Documentation stubs:
 - `.list-divider.header/.footer`
-- `.chevron.setting`
+- `.list img`
+- `.list .chevron.setting`
 - `.list.editable` (extra div required, fix in future release)
     - `delete` event

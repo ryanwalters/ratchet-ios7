@@ -250,14 +250,22 @@ body {
 }
 
 .list li {
-    padding: 11px 15px;
+    line-height: 27px;
+    padding: 8px 15px;
 }
 
-.list li > a:not([class*="button"]) {
-    margin: -11px -15px;
+.list li img {
+    margin: -5px 10px 0 0;
+    height: 27px;
+    border-radius: 6px;
+    vertical-align: middle;
 }
 
-.list li > a:not([class*="button"]):active {
+.list li > a:not([class*="button"]), .list.editable div > a:not([class*="button"]) {
+    margin: -8px -15px;
+}
+
+.list li > a:not([class*="button"]):active, .list.editable div > a:not([class*="button"]):active {
     background: rgba(0, 0, 0, 0.15);
 }
 
@@ -283,6 +291,13 @@ body {
     padding: 10px 15px 27px;
 }
 
+.list.editable div > a:not([class*="button"]) {
+    position: relative;
+    display: block;
+    padding: inherit;
+    color: inherit;
+}
+
 .list.editable li:not(.list-divider),
 .list.editable li:not(.list-divider) > div {
     position: relative;
@@ -291,7 +306,7 @@ body {
 
 .list.editable li:not(.list-divider) > div {
     background: #fff;
-    padding: 11px 15px;
+    padding: 8px 15px;
     -webkit-transition: -webkit-transform 0.2s;
 }
 
@@ -305,7 +320,7 @@ body {
     right: 0;
     content: "Delete";
     z-index: -1;
-    padding: 11px 15px;;
+    padding: 8px 15px;;
     background-color: #ff3b30;
     color: #fff;
     -webkit-transition: -webkit-transform 0.2s;
@@ -314,7 +329,7 @@ body {
 .list .chevron + .setting {
     position: absolute;
     top: 50%;
-    margin-top: -11px;
+    margin-top: -14px;
     right: 30px;
     color: #8e8e8e;
 }

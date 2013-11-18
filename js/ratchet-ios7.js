@@ -7,66 +7,61 @@
  */
 
 /* -----------------------
- * SWIPES
+ * detect swipes
  * ----------------------- */
 (function () {
-    window.Swipes = {
-        getSwipes: function () {
-            var startX,
-                startY,
-                deltaX,
-                deltaY,
-                timeStart,
-                timeMax = 400,
-                threshold = 50,
-                swipeEvent = new CustomEvent("swipe", {
-                    detail: {},
-                    bubbles: true,
-                    cancelable: true
-                }),
-                direction = {
-                    left:   false,
-                    right:  false,
-                    up:     false,
-                    down:   false
-                },
-                touchstart = function (event) {
-                    startX = event.touches[0].pageX;
-                    startY = event.touches[0].pageY;
-                    timeStart = +new Date();
-                },
-                touchend = function (event) {
-                    if (+new Date() - timeStart < timeMax) {
-                        deltaX = startX - event.changedTouches[0].pageX;
-                        deltaY = startY - event.changedTouches[0].pageY;
-                        if (Math.abs(deltaX) >= threshold && Math.abs(deltaX) > Math.abs(deltaY)) {         // moving horizontally
-                            if (deltaX > 0) {
-                                direction.left = true;
-                                direction.right = direction.up = direction.down = false;
-                            } else {
-                                direction.right  = true;
-                                direction.left = direction.up = direction.down = false;
-                            }
-                        } else if (Math.abs(deltaY) >= threshold && Math.abs(deltaY) > Math.abs(deltaX)) {  // moving vertically
-                            if (deltaY > 0) {
-                                direction.up     = true;
-                                direction.left = direction.right = direction.down = false;
-                            } else {
-                                direction.down   = true;
-                                direction.left = direction.right = direction.down = false;
-                            }
-                        } else
-                            direction.left = direction.right = direction.up = direction.down = false;
+    var startX,
+        startY,
+        deltaX,
+        deltaY,
+        timeStart,
+        timeMax = 400,
+        threshold = 50,
+        swipeEvent = new CustomEvent("swipe", {
+            detail: {},
+            bubbles: true,
+            cancelable: true
+        }),
+        direction = {
+            left:   false,
+            right:  false,
+            up:     false,
+            down:   false
+        },
+        touchstart = function (event) {
+            startX = event.touches[0].pageX;
+            startY = event.touches[0].pageY;
+            timeStart = +new Date();
+        },
+        touchend = function (event) {
+            if (+new Date() - timeStart < timeMax) {
+                deltaX = startX - event.changedTouches[0].pageX;
+                deltaY = startY - event.changedTouches[0].pageY;
+                if (Math.abs(deltaX) >= threshold && Math.abs(deltaX) > Math.abs(deltaY)) {         // moving horizontally
+                    if (deltaX > 0) {
+                        direction.left = true;
+                        direction.right = direction.up = direction.down = false;
+                    } else {
+                        direction.right  = true;
+                        direction.left = direction.up = direction.down = false;
                     }
-                    swipeEvent.detail.direction = direction;
-                    swipeEvent.detail.target = event.target; // todo: see if i can attach directly to target
-                    window.dispatchEvent(swipeEvent);
-                };
-            window.addEventListener("touchstart", touchstart, false);
-            window.addEventListener("touchend", touchend, false);
-        }
-    };
-    Swipes.getSwipes();
+                } else if (Math.abs(deltaY) >= threshold && Math.abs(deltaY) > Math.abs(deltaX)) {  // moving vertically
+                    if (deltaY > 0) {
+                        direction.up     = true;
+                        direction.left = direction.right = direction.down = false;
+                    } else {
+                        direction.down   = true;
+                        direction.left = direction.right = direction.down = false;
+                    }
+                } else
+                    direction.left = direction.right = direction.up = direction.down = false;
+            }
+            swipeEvent.detail.direction = direction;
+            swipeEvent.detail.target = event.target;    // todo: remove this and...
+            window.dispatchEvent(swipeEvent);           // todo: ...attach directly to target?
+        };
+    window.addEventListener("touchstart", touchstart, false);
+    window.addEventListener("touchend", touchend, false);
 }());
 
 /* -----------------------

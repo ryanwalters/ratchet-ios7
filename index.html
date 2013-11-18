@@ -19,7 +19,7 @@
         <header class="bar-title">
             <a class="button-prev" href="#">Previous</a>
             <h1 class="title">Page Title</h1>
-            <a class="more icon button" href="#">More</a>
+            <a class="more icon button" href="#modal">More</a>
         </header>
             
         <nav class="bar-standard bar-header-secondary">
@@ -91,16 +91,19 @@
             <ul class="list">
                 <li class="list-divider header">Multiple items</li>
                 <li>
+                    <img src="http://placehold.it/50/FF9500/FF9500" alt="" />
                     List item 1
                     <div class="toggle active">
                         <div class="toggle-handle"></div>
                     </div>
                 </li>
                 <li><a href="#">
+                    <img src="http://placehold.it/50/8E8E93/8E8E93" alt="" />
                     List item 2
                     <span class="chevron"></span>
                 </a></li>
                 <li><a href="#">
+                    <img src="http://placehold.it/50/5856D6/5856D6" alt="" />
                     List item 3
                     <span class="chevron"></span>
                     <span class="setting">Your setting</span>
@@ -109,23 +112,36 @@
             <ul class="list editable">
                 <li class="list-divider header">Editable list</li>
                 <li><div>Edit item 1</div></li>
-                <li><div>Edit item 2</div></li>
+                <li><div><a href="#">
+                    Edit item 2
+                    <span class="chevron"></span>
+                    <span class="setting">Your setting</span>
+                </a></div></li>
                 <li class="list-divider footer">Describe the items above.</li>
             </ul>
-            <form class="content-padded">
-                <input type="search" placeholder="Search" />
-                <div class="input-group">
-                    <input type="text" placeholder="Username" />
-                    <div class="input-row">
-                        <label>Email</label>
-                        <input type="email" placeholder="email@address.com" />
+        </section>
+        
+        <section id="modal" class="modal">
+            <header class="bar-title">
+                <h1 class="title">Modal window</h1>
+                <a class="button" href="#modal">Close</a>
+            </header>
+            <div class="content">
+                <form class="content-padded">
+                    <input type="search" placeholder="Search" />
+                    <div class="input-group">
+                        <input type="text" placeholder="Username" />
+                        <div class="input-row">
+                            <label>Email</label>
+                            <input type="email" placeholder="email@address.com" />
+                        </div>
+                        <div class="input-row">
+                            <label>Name</label>
+                            <input type="text" placeholder="John Smith" />
+                        </div>
                     </div>
-                    <div class="input-row">
-                        <label>Name</label>
-                        <input type="text" placeholder="John Smith" />
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </section>
             
         <script src="http://cdnjs.cloudflare.com/ajax/libs/ratchet/1.0.1/ratchet.js"></script>
