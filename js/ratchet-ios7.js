@@ -19,7 +19,7 @@
                 timeStart,
                 timeMax = 400,
                 threshold = 50,
-                swipe = new CustomEvent("swipe", {
+                swipeEvent = new CustomEvent("swipe", {
                     detail: {},
                     bubbles: true,
                     cancelable: true
@@ -58,9 +58,9 @@
                         } else
                             direction.left = direction.right = direction.up = direction.down = false;
                     }
-                    swipe.detail.direction = direction;
-                    swipe.detail.target = event.target; // todo: see if i can attach directly to target
-                    window.dispatchEvent(swipe);
+                    swipeEvent.detail.direction = direction;
+                    swipeEvent.detail.target = event.target; // todo: see if i can attach directly to target
+                    window.dispatchEvent(swipeEvent);
                 };
             window.addEventListener("touchstart", touchstart, false);
             window.addEventListener("touchend", touchend, false);
@@ -73,30 +73,38 @@
  * EDITABLES
  * ----------------------- */
 (function () {
-    var findEditables = function (target) {
+    var deleteEvent = new CustomEvent("delete", {
+            detail: {},
+            bubbles: true,
+            cancelable: true
+        }),
+        findEditables = function (target) {
             var i, editables = document.querySelectorAll(".editable li:not(.list-divider)");
             for (; target && target !== document; target = target.parentNode) {
-                for (i = editables.length; i--;) { if (editables[i] === target) { return target; } }
+                for (i = editables.length; i--;) { if (editables[i] === target) return target; }
             }
         };
     
     window.addEventListener("swipe", function (event) {
         var editable = findEditables(event.detail.target);
         if (editable) {
-            event.detail.direction.left ? editable.classList.add("active") : null;
-            event.detail.direction.right ? editable.classList.remove("active") : null;
+            if (event.detail.direction.left) editable.classList.add("active");
+            if (event.detail.direction.right) editable.classList.remove("active");
         };
     });
     window.addEventListener("touchend", function (event) {
         var editable = findEditables(event.target),
-            currentEditable = editable.parentNode.firstChild;
+            currentEditable;
         if (editable) {
             if (event.target.nodeName === "LI" && editable.classList.contains("active")) {
                 editable.parentNode.removeChild(editable);
+                deleteEvent.detail.deletedItem = editable;
+                window.dispatchEvent(deleteEvent);
             }
+            currentEditable = editable.parentNode.firstChild;
             for (; currentEditable; currentEditable = currentEditable.nextSibling) {
-                if (currentEditable.nodeType === 1 && currentEditable !== editable) {
-                    currentEditable.classList.remove("active");
+                if (currentEditable.nodeType === 1) {
+                    if (currentEditable !== editable) currentEditable.classList.remove("active");
                 }
             }
         }

@@ -12,6 +12,7 @@ Styling:
 Functionality:
 - autocomplete
 - drag to sort
+- trigger event after item deleted
 
 Other:
 - update this with supplemental documentation
@@ -23,4 +24,5 @@ Ongoing:
 Documentation stubs:
 - `.list-divider.header/.footer`
 - `.chevron.setting`
-- `.list.editable` extra div required (fix in future release)
+- `.list.editable` (extra div required, fix in future release)
+    - `delete` event
